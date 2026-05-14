@@ -1,99 +1,106 @@
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, PawPrint } from 'lucide-react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { Menu, X, Phone } from 'lucide-react'
 
 const links = [
-  { label: 'Sobre',        href: '#journey' },
-  { label: 'Módulos',      href: '#modules' },
-  { label: 'Silvestres',   href: '#wildlife' },
-  { label: 'Estágio',      href: '#internship' },
-  { label: 'Depoimentos',  href: '#testimonials' },
+  { label: 'Sobre',       href: '#sobre' },
+  { label: 'Módulos',     href: '#modulos' },
+  { label: 'Silvestres',  href: '#silvestres' },
+  { label: 'Estágio',     href: '#estagio' },
+  { label: 'Depoimentos', href: '#depoimentos' },
+  { label: 'FAQ',         href: '#faq' },
 ]
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
-  const [open, setOpen] = useState(false)
+  const [solid, setSolid] = useState(false)
+  const [open, setOpen]   = useState(false)
 
   useEffect(() => {
-    const h = () => setScrolled(window.scrollY > 60)
+    const h = () => setSolid(window.scrollY > 60)
     window.addEventListener('scroll', h, { passive: true })
     return () => window.removeEventListener('scroll', h)
   }, [])
 
   return (
-    <motion.nav
-      initial={{ y: -70, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+    <nav
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
-        background: scrolled ? 'rgba(255,255,255,0.92)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(20px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(237,247,234,0.8)' : 'none',
-        boxShadow: scrolled ? '0 2px 20px rgba(45,106,31,0.08)' : 'none',
+        background: solid ? '#ffffff' : 'rgba(255,255,255,0.96)',
+        borderBottom: `1px solid ${solid ? '#e5e7eb' : 'transparent'}`,
+        boxShadow: solid ? '0 1px 12px rgba(0,0,0,0.07)' : 'none',
       }}
     >
-      <div className="max-w-6xl mx-auto px-6 md:px-10 h-[64px] flex items-center justify-between">
-        {/* Logo */}
-        <a href="#" className="flex items-center gap-2.5 group">
-          <div
-            className="w-8 h-8 rounded-full flex items-center justify-center animate-breathe"
-            style={{ background: scrolled ? '#2d6a1f' : 'rgba(255,255,255,0.18)' }}
-          >
-            <PawPrint size={15} style={{ color: scrolled ? 'white' : 'rgba(168,213,162,0.9)' }} strokeWidth={2} />
-          </div>
-          <span
-            className="text-[1.1rem] font-semibold transition-colors duration-300"
-            style={{
-              fontFamily: "'Fredoka', sans-serif",
-              color: scrolled ? '#2d6a1f' : 'white',
-            }}
-          >
-            Cemevet
+      {/* Top bar — phone + socials */}
+      <div
+        className="hidden md:flex items-center justify-between px-8 lg:px-12 py-2 text-[0.75rem]"
+        style={{ background: '#1f7a3c', color: 'rgba(255,255,255,0.85)' }}
+      >
+        <div className="flex items-center gap-1.5">
+          <Phone size={11} className="opacity-70" />
+          <span style={{ fontFamily: "'Nunito', sans-serif" }}>
+            (81) 9 9999-9999 — Camaragibe, Pernambuco
           </span>
+        </div>
+        <span style={{ fontFamily: "'Nunito', sans-serif" }}>
+          Reconhecido pelo CRMV · Estágio garantido
+        </span>
+      </div>
+
+      {/* Main bar */}
+      <div className="max-w-6xl mx-auto px-5 md:px-8 h-[60px] flex items-center justify-between">
+        {/* Logo */}
+        <a href="#" className="flex items-center gap-2.5">
+          <div
+            className="w-9 h-9 rounded-lg flex items-center justify-center animate-breathe"
+            style={{ background: '#1f7a3c' }}
+          >
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M10 5.172C10 3.782 8.423 2.679 6.5 3c-2.823.47-4.113 6.006-4 7 .08.703 1.725 1.722 3.656 1 1.261-.472 1.96-1.45 2.344-2.5"/>
+              <path d="M14.267 5.172c0-1.39 1.577-2.493 3.5-2.172 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.96-1.45-2.344-2.5"/>
+              <path d="M8 14v.5"/>
+              <path d="M16 14v.5"/>
+              <path d="M11.25 16.25h1.5L12 17l-.75-.75z"/>
+              <path d="M4.42 11.247A13.152 13.152 0 0 0 4 14.556C4 18.728 7.582 21 12 21s8-2.272 8-6.444c0-1.061-.162-2.2-.493-3.309m-9.243-6.082A8.801 8.801 0 0 1 12 5c.78 0 1.5.108 2.161.306"/>
+            </svg>
+          </div>
+          <div>
+            <p className="font-semibold text-ink leading-none text-[1rem]" style={{ fontFamily: "'Fredoka', sans-serif" }}>
+              Cemevet
+            </p>
+            <p className="text-ink-muted text-[0.62rem] leading-none" style={{ fontFamily: "'Nunito', sans-serif" }}>
+              Cursos Veterinários
+            </p>
+          </div>
         </a>
 
-        {/* Desktop links */}
-        <ul className="hidden md:flex items-center gap-8">
+        {/* Desktop nav */}
+        <ul className="hidden md:flex items-center gap-7">
           {links.map((l) => (
             <li key={l.href}>
               <a
                 href={l.href}
-                className="relative text-[0.88rem] font-medium transition-colors duration-200 group"
-                style={{
-                  color: scrolled ? '#4a5e44' : 'rgba(255,255,255,0.75)',
-                  fontFamily: "'Nunito', sans-serif",
-                }}
+                className="text-[0.85rem] font-semibold text-ink-soft hover:text-brand transition-colors duration-200"
+                style={{ fontFamily: "'Nunito', sans-serif" }}
               >
                 {l.label}
-                <span
-                  className="absolute -bottom-0.5 left-0 h-px rounded-full transition-all duration-300 w-0 group-hover:w-full"
-                  style={{ background: scrolled ? '#2d6a1f' : 'rgba(168,213,162,0.8)' }}
-                />
               </a>
             </li>
           ))}
         </ul>
 
-        {/* CTA button */}
+        {/* CTA */}
         <a
-          href="https://wa.me/5581999999999?text=Quero+saber+mais+sobre+o+curso"
+          href="https://wa.me/5581999999999?text=Quero+me+matricular+no+curso+da+Cemevet"
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden md:flex items-center px-5 py-2 rounded-full text-white text-[0.84rem] font-semibold transition-all hover:scale-105 hover:shadow-lg"
-          style={{
-            background: 'linear-gradient(135deg, #2d6a1f, #4a8a2a)',
-            boxShadow: '0 4px 14px rgba(45,106,31,0.35)',
-            fontFamily: "'Nunito', sans-serif",
-          }}
+          className="hidden md:flex btn-primary text-[0.82rem] py-2.5 px-5"
         >
           Matricular-me
         </a>
 
-        {/* Mobile burger */}
+        {/* Burger */}
         <button
-          className="md:hidden p-2 rounded-lg transition-colors"
-          style={{ color: scrolled ? '#2d6a1f' : 'white' }}
+          className="md:hidden p-1.5 text-ink-mid"
           onClick={() => setOpen(!open)}
           aria-label="Menu"
         >
@@ -108,21 +115,16 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden"
-            style={{
-              background: 'rgba(255,255,255,0.97)',
-              borderTop: '1px solid #edf7ea',
-              backdropFilter: 'blur(20px)',
-            }}
+            transition={{ duration: 0.25 }}
+            className="md:hidden overflow-hidden border-t border-line bg-white"
           >
-            <ul className="flex flex-col px-6 py-5 gap-5">
+            <ul className="px-5 py-4 flex flex-col gap-4">
               {links.map((l) => (
                 <li key={l.href}>
                   <a
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="text-[0.95rem] font-medium text-ink-soft hover:text-green-bio transition-colors"
+                    className="text-[0.95rem] font-semibold text-ink-mid hover:text-brand transition-colors"
                     style={{ fontFamily: "'Nunito', sans-serif" }}
                   >
                     {l.label}
@@ -134,11 +136,7 @@ export default function Navbar() {
                   href="https://wa.me/5581999999999?text=Quero+me+matricular"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-center py-3 rounded-full text-white font-semibold text-[0.9rem]"
-                  style={{
-                    background: 'linear-gradient(135deg, #2d6a1f, #4a8a2a)',
-                    fontFamily: "'Nunito', sans-serif",
-                  }}
+                  className="btn-primary w-full justify-center"
                 >
                   Quero me matricular
                 </a>
@@ -147,6 +145,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </nav>
   )
 }

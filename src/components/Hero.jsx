@@ -1,284 +1,249 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, MapPin, Shield, Award, BookOpen } from 'lucide-react'
+import { ArrowRight, CheckCircle } from 'lucide-react'
 
 const ease = [0.25, 0.46, 0.45, 0.94]
 
-function FadeUp({ children, delay = 0 }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 36 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration: 0.8, ease }}
-    >
-      {children}
-    </motion.div>
-  )
-}
+const proof = [
+  'Estágio garantido em contrato',
+  'Certificação reconhecida pelo CRMV',
+  'Workshop exclusivo com animais silvestres',
+]
 
-/* Decorative animal silhouette composed entirely of SVG paths */
-function AnimalComposition() {
+/* Decorative animal SVG — clean line-art style, like a clinical illustration */
+function HeroIllustration() {
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.88, x: 40 }}
-      animate={{ opacity: 1, scale: 1, x: 0 }}
-      transition={{ delay: 0.45, duration: 1.1, ease }}
-      className="relative hidden md:flex items-center justify-center"
-    >
-      {/* Main card */}
+    <div className="relative w-full h-full min-h-[420px] md:min-h-0">
+      {/* Main image block */}
       <div
-        className="relative w-full max-w-[420px] rounded-[2.5rem] p-8 animate-float"
-        style={{
-          background: 'rgba(255,255,255,0.08)',
-          border: '1px solid rgba(255,255,255,0.14)',
-          backdropFilter: 'blur(24px)',
-        }}
+        className="absolute inset-0 rounded-2xl overflow-hidden img-placeholder"
+        style={{ borderRadius: '20px' }}
       >
-        {/* Top badge */}
+        {/* Overlay gradient bottom */}
         <div
-          className="absolute -top-4 left-8 flex items-center gap-2 px-4 py-2 rounded-full"
-          style={{ background: '#fbbf24', boxShadow: '0 8px 24px rgba(251,191,36,0.4)' }}
-        >
-          <Award size={14} className="text-white" />
-          <span className="text-xs font-bold text-white" style={{ fontFamily: "'Fredoka', sans-serif" }}>
-            Reconhecido CRMV
-          </span>
-        </div>
+          className="absolute bottom-0 left-0 right-0 h-32 z-10"
+          style={{ background: 'linear-gradient(to top, rgba(31,122,60,0.15), transparent)' }}
+        />
 
-        {/* Illustration area — abstract animal silhouettes via SVG */}
-        <div className="flex justify-center mb-6 mt-4">
-          <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full max-w-[300px]">
-            {/* Dog silhouette */}
-            <g opacity="0.9">
-              <ellipse cx="90" cy="130" rx="38" ry="22" fill="rgba(168,213,162,0.25)" />
-              <ellipse cx="90" cy="108" rx="22" ry="26" fill="rgba(168,213,162,0.35)" />
-              <ellipse cx="90" cy="88" rx="18" ry="20" fill="rgba(168,213,162,0.5)" />
-              {/* ears */}
-              <ellipse cx="76" cy="74" rx="7" ry="12" fill="rgba(109,184,92,0.6)" transform="rotate(-15 76 74)" />
-              <ellipse cx="104" cy="74" rx="7" ry="12" fill="rgba(109,184,92,0.6)" transform="rotate(15 104 74)" />
-              {/* legs */}
-              <rect x="70" y="144" width="10" height="22" rx="5" fill="rgba(168,213,162,0.4)" />
-              <rect x="86" y="144" width="10" height="22" rx="5" fill="rgba(168,213,162,0.4)" />
-              <rect x="101" y="144" width="10" height="22" rx="5" fill="rgba(168,213,162,0.4)" />
-              {/* tail */}
-              <path d="M128,126 Q148,110 140,94" stroke="rgba(168,213,162,0.7)" strokeWidth="8" strokeLinecap="round" fill="none" />
-            </g>
+        {/* Central clinical illustration */}
+        <div className="absolute inset-0 flex items-center justify-center z-10">
+          <svg viewBox="0 0 320 280" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[70%] max-w-[260px]">
+            {/* Stethoscope */}
+            <circle cx="160" cy="200" r="28" stroke="#1f7a3c" strokeWidth="6" fill="none" opacity="0.5" />
+            <path d="M132,200 Q100,200 90,170 Q80,140 90,120 Q100,100 110,100" stroke="#1f7a3c" strokeWidth="6" strokeLinecap="round" fill="none" opacity="0.5" />
+            <path d="M188,200 Q220,200 226,170 Q232,140 222,120 Q212,100 200,100" stroke="#1f7a3c" strokeWidth="6" strokeLinecap="round" fill="none" opacity="0.5" />
+            <ellipse cx="110" cy="92" rx="10" ry="14" stroke="#1f7a3c" strokeWidth="5" fill="none" opacity="0.5" />
+            <ellipse cx="200" cy="92" rx="10" ry="14" stroke="#1f7a3c" strokeWidth="5" fill="none" opacity="0.5" />
 
-            {/* Cat silhouette */}
-            <g opacity="0.9">
-              <ellipse cx="220" cy="132" rx="30" ry="18" fill="rgba(109,184,92,0.2)" />
-              <ellipse cx="220" cy="114" rx="18" ry="22" fill="rgba(109,184,92,0.28)" />
-              <ellipse cx="220" cy="96" rx="16" ry="18" fill="rgba(109,184,92,0.4)" />
-              {/* pointed ears */}
-              <polygon points="207,82 202,66 214,78" fill="rgba(109,184,92,0.55)" />
-              <polygon points="233,82 238,66 226,78" fill="rgba(109,184,92,0.55)" />
-              {/* legs */}
-              <rect x="205" y="142" width="9" height="20" rx="4" fill="rgba(109,184,92,0.35)" />
-              <rect x="219" y="142" width="9" height="20" rx="4" fill="rgba(109,184,92,0.35)" />
-              {/* tail curl */}
-              <path d="M250,130 Q268,120 260,100 Q252,82 240,90" stroke="rgba(109,184,92,0.6)" strokeWidth="7" strokeLinecap="round" fill="none" />
-            </g>
+            {/* Dog face — clean line art */}
+            <circle cx="160" cy="110" r="52" fill="white" opacity="0.7" />
+            <circle cx="160" cy="110" r="52" stroke="#1f7a3c" strokeWidth="3" fill="none" opacity="0.3" />
+            {/* ears */}
+            <ellipse cx="120" cy="82" rx="18" ry="26" fill="#c8e6d1" opacity="0.8" />
+            <ellipse cx="200" cy="82" rx="18" ry="26" fill="#c8e6d1" opacity="0.8" />
+            <ellipse cx="120" cy="82" rx="12" ry="19" fill="#a0d4b0" opacity="0.6" />
+            <ellipse cx="200" cy="82" rx="12" ry="19" fill="#a0d4b0" opacity="0.6" />
+            {/* eyes */}
+            <circle cx="145" cy="104" r="7" fill="#1f7a3c" opacity="0.7" />
+            <circle cx="175" cy="104" r="7" fill="#1f7a3c" opacity="0.7" />
+            <circle cx="147" cy="102" r="2.5" fill="white" opacity="0.8" />
+            <circle cx="177" cy="102" r="2.5" fill="white" opacity="0.8" />
+            {/* nose */}
+            <ellipse cx="160" cy="120" rx="9" ry="7" fill="#1f7a3c" opacity="0.5" />
+            {/* mouth */}
+            <path d="M151,127 Q160,134 169,127" stroke="#1f7a3c" strokeWidth="2.5" strokeLinecap="round" fill="none" opacity="0.5" />
+            {/* collar */}
+            <rect x="132" y="155" width="56" height="12" rx="6" fill="#1f7a3c" opacity="0.2" />
+            <circle cx="160" cy="161" r="4" fill="#1f7a3c" opacity="0.35" />
 
-            {/* Bird perched */}
-            <g opacity="0.85">
-              <ellipse cx="160" cy="52" rx="14" ry="18" fill="rgba(255,255,255,0.2)" />
-              <ellipse cx="160" cy="36" rx="11" ry="13" fill="rgba(255,255,255,0.28)" />
-              {/* beak */}
-              <polygon points="153,37 147,40 153,43" fill="rgba(251,191,36,0.7)" />
-              {/* wing */}
-              <path d="M146,55 Q132,62 130,74" stroke="rgba(255,255,255,0.4)" strokeWidth="6" strokeLinecap="round" fill="none" />
-              <path d="M174,55 Q188,62 190,74" stroke="rgba(255,255,255,0.4)" strokeWidth="6" strokeLinecap="round" fill="none" />
-              {/* perch */}
-              <line x1="135" y1="74" x2="185" y2="74" stroke="rgba(168,213,162,0.5)" strokeWidth="4" strokeLinecap="round" />
-            </g>
+            {/* Small cross/medical */}
+            <rect x="56" y="36" width="22" height="6" rx="3" fill="#1f7a3c" opacity="0.3" />
+            <rect x="63" y="29" width="6" height="22" rx="3" fill="#1f7a3c" opacity="0.3" />
 
-            {/* Stethoscope detail */}
-            <path
-              d="M38,40 Q30,30 38,22 Q46,14 54,22 Q62,30 54,40 Q46,50 38,58 L38,78"
-              stroke="rgba(255,255,255,0.3)"
-              strokeWidth="3"
-              strokeLinecap="round"
-              fill="none"
-            />
-            <circle cx="38" cy="84" r="7" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="3" />
-
-            {/* Cross/medical */}
-            <g opacity="0.3">
-              <rect x="278" y="28" width="24" height="8" rx="4" fill="white" />
-              <rect x="286" y="20" width="8" height="24" rx="4" fill="white" />
-            </g>
+            {/* Paw print small decorative */}
+            <circle cx="258" cy="50" r="7" fill="#1f7a3c" opacity="0.2" />
+            <circle cx="272" cy="44" r="4" fill="#1f7a3c" opacity="0.2" />
+            <circle cx="278" cy="57" r="4" fill="#1f7a3c" opacity="0.2" />
+            <circle cx="265" cy="61" r="4" fill="#1f7a3c" opacity="0.2" />
           </svg>
-        </div>
-
-        {/* Stats row */}
-        <div
-          className="grid grid-cols-3 gap-3 p-4 rounded-2xl"
-          style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}
-        >
-          {[
-            { icon: Shield, label: 'Estágio', value: 'Garantido' },
-            { icon: Award, label: 'CRMV', value: 'Reconhecido' },
-            { icon: BookOpen, label: 'Alunos', value: '+200 formados' },
-          ].map(({ icon: Icon, label, value }) => (
-            <div key={label} className="flex flex-col items-center gap-1 text-center">
-              <Icon size={16} className="text-green-pale opacity-70" />
-              <p className="text-white/50 text-[10px]" style={{ fontFamily: "'Nunito', sans-serif" }}>{label}</p>
-              <p className="text-white font-semibold text-xs" style={{ fontFamily: "'Fredoka', sans-serif" }}>{value}</p>
-            </div>
-          ))}
         </div>
       </div>
 
-      {/* Orbiting glow */}
-      <div
-        className="absolute inset-[-40px] rounded-full pointer-events-none animate-organic opacity-20"
-        style={{ background: 'radial-gradient(ellipse at center, #6db85c 0%, transparent 70%)' }}
-      />
-    </motion.div>
+      {/* Floating card — credencial */}
+      <motion.div
+        initial={{ opacity: 0, y: 16, x: -10 }}
+        animate={{ opacity: 1, y: 0, x: 0 }}
+        transition={{ delay: 0.9, duration: 0.6, ease }}
+        className="absolute -bottom-5 -left-5 bg-white rounded-xl p-4 z-20"
+        style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.12)', minWidth: '180px' }}
+      >
+        <div className="flex items-center gap-2.5">
+          <div
+            className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
+            style={{ background: '#e8f5ed' }}
+          >
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#1f7a3c" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+          </div>
+          <div>
+            <p className="font-bold text-ink text-[0.82rem]" style={{ fontFamily: "'Fredoka', sans-serif" }}>CRMV Reconhecido</p>
+            <p className="text-ink-soft text-[0.7rem]" style={{ fontFamily: "'Nunito', sans-serif" }}>Certificação oficial</p>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Floating card — alunos */}
+      <motion.div
+        initial={{ opacity: 0, y: -16, x: 10 }}
+        animate={{ opacity: 1, y: 0, x: 0 }}
+        transition={{ delay: 1.05, duration: 0.6, ease }}
+        className="absolute -top-5 -right-5 bg-white rounded-xl p-4 z-20"
+        style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.12)' }}
+      >
+        <p className="font-bold text-[1.4rem] text-brand" style={{ fontFamily: "'Fredoka', sans-serif" }}>+200</p>
+        <p className="text-ink-soft text-[0.72rem]" style={{ fontFamily: "'Nunito', sans-serif" }}>Alunos formados</p>
+      </motion.div>
+    </div>
   )
 }
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background layers */}
-      <div className="absolute inset-0 z-0">
-        <div
-          className="absolute inset-0"
-          style={{
-            background: 'linear-gradient(150deg, #112409 0%, #1e4210 25%, #2d6a1f 55%, #1a3d0e 100%)',
-          }}
-        />
-        {/* Noise grain texture */}
-        <div
-          className="absolute inset-0 opacity-[0.035]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")`,
-          }}
-        />
-        {/* Soft radial glow right */}
-        <div
-          className="absolute -right-32 top-1/4 w-[600px] h-[600px] rounded-full opacity-20"
-          style={{ background: 'radial-gradient(circle, #6db85c 0%, transparent 65%)' }}
-        />
-        {/* Grid dots */}
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.9) 1px, transparent 1px)',
-            backgroundSize: '48px 48px',
-          }}
-        />
-      </div>
+    <section
+      className="pt-[104px] md:pt-[124px] pb-16 md:pb-20 px-5 md:px-8"
+      style={{ background: 'linear-gradient(180deg, #f2faf5 0%, #ffffff 100%)' }}
+    >
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10 lg:px-12 w-full pt-24 pb-20 grid md:grid-cols-[1fr_1fr] gap-16 items-center">
         {/* Left — copy */}
-        <div className="flex flex-col">
-          <FadeUp delay={0}>
-            <div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 w-fit"
-              style={{
-                background: 'rgba(255,255,255,0.09)',
-                border: '1px solid rgba(255,255,255,0.16)',
-              }}
-            >
-              <MapPin size={13} className="text-green-pale" />
-              <span className="text-[13px] text-green-pale font-medium" style={{ fontFamily: "'Nunito', sans-serif" }}>
-                Camaragibe, Pernambuco
-              </span>
-            </div>
-          </FadeUp>
-
-          <FadeUp delay={0.1}>
-            <h1
-              className="text-[2.6rem] md:text-[3.2rem] lg:text-[3.8rem] font-semibold leading-[1.1] text-white mb-6"
-              style={{ fontFamily: "'Fredoka', sans-serif", letterSpacing: '-0.5px' }}
-            >
-              Transforme seu amor pelos animais em uma{' '}
-              <span style={{ color: '#a8d5a2' }}>profissão de verdade.</span>
-            </h1>
-          </FadeUp>
-
-          <FadeUp delay={0.2}>
-            <p
-              className="text-[1.05rem] text-white/65 leading-[1.75] mb-10 max-w-[480px]"
+        <div>
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mb-6"
+            style={{ background: '#e8f5ed', border: '1px solid #c3e0cc' }}
+          >
+            <span
+              className="text-[0.72rem] font-bold uppercase tracking-wider text-brand"
               style={{ fontFamily: "'Nunito', sans-serif" }}
             >
-              Auxiliar de Medicina Veterinária com{' '}
-              <strong className="text-white/90 font-semibold">estágio garantido</strong> e
-              reconhecimento CRMV. A formação mais completa de Camaragibe.
-            </p>
-          </FadeUp>
+              Camaragibe · Pernambuco
+            </span>
+          </motion.div>
 
-          <FadeUp delay={0.3}>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <a
-                href="https://wa.me/5581999999999?text=Quero+me+matricular+no+curso+de+Auxiliar+Veterinário+da+Cemevet"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-full text-white font-bold text-[0.95rem] btn-shimmer transition-all duration-300 hover:scale-[1.03]"
-                style={{ fontFamily: "'Nunito', sans-serif", boxShadow: '0 8px 32px rgba(45,106,31,0.55)' }}
-              >
-                Quero me matricular
-                <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" />
-              </a>
-              <a
-                href="https://wa.me/5581999999999?text=Quero+tirar+dúvidas+sobre+o+curso"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold text-[0.95rem] text-white transition-all duration-300 hover:bg-white/20"
-                style={{
-                  background: 'rgba(255,255,255,0.10)',
-                  border: '1.5px solid rgba(255,255,255,0.22)',
-                  fontFamily: "'Nunito', sans-serif",
-                }}
-              >
-                Falar no WhatsApp
-              </a>
-            </div>
-          </FadeUp>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.7, ease }}
+            className="mb-5"
+            style={{
+              fontFamily: "'Fredoka', sans-serif",
+              fontSize: 'clamp(2rem, 5vw, 3rem)',
+              fontWeight: 600,
+              lineHeight: 1.12,
+              color: '#111827',
+            }}
+          >
+            Transforme seu amor pelos animais em uma{' '}
+            <span className="text-brand-gradient">profissão reconhecida.</span>
+          </motion.h1>
 
-          <FadeUp delay={0.45}>
-            <div className="flex items-center gap-4 mt-10">
-              <div className="flex -space-x-2">
-                {['AM', 'JL', 'PT', 'CR'].map((initials, i) => (
-                  <div
-                    key={i}
-                    className="w-9 h-9 rounded-full flex items-center justify-center text-[11px] font-bold text-white border-2"
-                    style={{
-                      background: `linear-gradient(135deg, ${['#2d6a1f','#4a8a2a','#376a19','#6db85c'][i]}, ${['#4a8a2a','#6db85c','#4a8a2a','#a8d5a2'][i]})`,
-                      borderColor: 'rgba(255,255,255,0.2)',
-                    }}
-                  >
-                    {initials}
-                  </div>
-                ))}
-              </div>
-              <div>
-                <div className="flex gap-0.5 mb-1">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} width="12" height="12" viewBox="0 0 24 24" fill="#fbbf24">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-white/55 text-[12px]" style={{ fontFamily: "'Nunito', sans-serif" }}>
-                  +200 alunos formados em Camaragibe
-                </p>
-              </div>
-            </div>
-          </FadeUp>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.7, ease }}
+            className="body-copy mb-8 max-w-[480px]"
+          >
+            Curso de Auxiliar de Medicina Veterinária com estágio garantido e
+            certificação reconhecida pelo CRMV. A formação mais completa da
+            Grande Recife para quem quer trabalhar com animais.
+          </motion.p>
+
+          {/* Proof points */}
+          <motion.ul
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.7, ease }}
+            className="flex flex-col gap-2.5 mb-9"
+          >
+            {proof.map((p) => (
+              <li key={p} className="flex items-center gap-2.5">
+                <CheckCircle size={16} style={{ color: '#1f7a3c', flexShrink: 0 }} strokeWidth={2.5} />
+                <span className="text-ink-mid text-[0.9rem] font-semibold" style={{ fontFamily: "'Nunito', sans-serif" }}>
+                  {p}
+                </span>
+              </li>
+            ))}
+          </motion.ul>
+
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.7, ease }}
+            className="flex flex-col sm:flex-row gap-3"
+          >
+            <a
+              href="https://wa.me/5581999999999?text=Quero+me+matricular+no+curso+de+Auxiliar+Veterinário+da+Cemevet"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+            >
+              Quero me matricular
+              <ArrowRight size={16} />
+            </a>
+            <a
+              href="https://wa.me/5581999999999?text=Quero+conhecer+mais+sobre+a+Cemevet"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-outline"
+            >
+              Falar com a equipe
+            </a>
+          </motion.div>
         </div>
 
         {/* Right — illustration */}
-        <AnimalComposition />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.35, duration: 0.9, ease }}
+          className="relative"
+        >
+          <HeroIllustration />
+        </motion.div>
       </div>
 
-      {/* Wave divider */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 pointer-events-none">
-        <svg viewBox="0 0 1440 72" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full">
-          <path d="M0,36 C360,72 720,0 1080,36 C1260,54 1380,30 1440,36 L1440,72 L0,72 Z" fill="#faf8f4" />
-        </svg>
-      </div>
+      {/* Trust strip */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6, duration: 0.7, ease }}
+        className="max-w-6xl mx-auto mt-14 pt-8 border-t border-line"
+      >
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+          {[
+            { n: '+200', l: 'Alunos formados' },
+            { n: '100%', l: 'com estágio garantido' },
+            { n: '15+',  l: 'clínicas parceiras' },
+            { n: '4.9',  l: 'avaliação média' },
+          ].map(({ n, l }) => (
+            <div key={l} className="text-center">
+              <p
+                className="text-[1.8rem] font-bold leading-none mb-1"
+                style={{ fontFamily: "'Fredoka', sans-serif", color: '#1f7a3c' }}
+              >
+                {n}
+              </p>
+              <p className="text-ink-soft text-[0.8rem]" style={{ fontFamily: "'Nunito', sans-serif" }}>
+                {l}
+              </p>
+            </div>
+          ))}
+        </div>
+      </motion.div>
     </section>
   )
 }

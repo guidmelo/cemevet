@@ -1,117 +1,141 @@
 import { motion } from 'framer-motion'
 import { useReveal } from '../hooks/useReveal'
-import {
-  Stethoscope, Syringe, Microscope, Pill, Scissors,
-  HeartPulse, Scan, FlaskConical, Bone, Activity
-} from 'lucide-react'
+import { Stethoscope, Syringe, Microscope, Pill, Scissors, HeartPulse, Scan, FlaskConical, Bone, Activity } from 'lucide-react'
 
-const modules = [
-  { icon: Stethoscope, title: 'Clínica Médica',          tag: 'Base essencial',   color: '#2d6a1f' },
-  { icon: Syringe,     title: 'Técnicas de Enfermagem',  tag: 'Hands-on',         color: '#1d6fa4' },
-  { icon: Microscope,  title: 'Laboratório Clínico',     tag: 'Prático',          color: '#7c3aed' },
-  { icon: Pill,        title: 'Farmacologia',            tag: 'Teórico-prático',  color: '#dc2626' },
-  { icon: Scissors,    title: 'Centro Cirúrgico',        tag: 'Especialização',   color: '#059669' },
-  { icon: HeartPulse,  title: 'Emergência e UTI',        tag: 'Avançado',         color: '#e53e3e' },
-  { icon: Scan,        title: 'Diagnóstico por Imagem',  tag: 'Tecnologia',       color: '#2563eb' },
-  { icon: FlaskConical,title: 'Nutrição e Dietética',    tag: 'Bem-estar',        color: '#d97706' },
-  { icon: Bone,        title: 'Ortopedia e Fisioterapia',tag: 'Reabilitação',     color: '#8b6f47' },
-  { icon: Activity,    title: 'Anestesiologia',          tag: 'Suporte clínico',  color: '#374151' },
+const services = [
+  {
+    icon: Stethoscope,
+    title: 'Clínica Médica',
+    desc: 'Semiologia, exame físico, sinais vitais e protocolos de triagem para cães, gatos e animais exóticos.',
+  },
+  {
+    icon: Syringe,
+    title: 'Técnicas de Enfermagem',
+    desc: 'Venopunção, aplicação de medicamentos, sondagem e curativos com supervisão especializada.',
+  },
+  {
+    icon: Microscope,
+    title: 'Laboratório Clínico',
+    desc: 'Coleta e análise de amostras biológicas, hemograma, urinálise e parasitológico.',
+  },
+  {
+    icon: Pill,
+    title: 'Farmacologia Veterinária',
+    desc: 'Principais fármacos, dosagens por espécie, vias de administração e interações medicamentosas.',
+  },
+  {
+    icon: Scissors,
+    title: 'Centro Cirúrgico',
+    desc: 'Preparo do paciente, instrumental cirúrgico, paramentação e assepsia operatória.',
+  },
+  {
+    icon: HeartPulse,
+    title: 'Emergência e UTI',
+    desc: 'RCP veterinária, suporte ventilatório e monitoramento em terapia intensiva animal.',
+  },
+  {
+    icon: Scan,
+    title: 'Diagnóstico por Imagem',
+    desc: 'Preparo para radiografia e ultrassonografia — posicionamento, protocolo e segurança radiológica.',
+  },
+  {
+    icon: FlaskConical,
+    title: 'Nutrição e Dietética',
+    desc: 'Cálculo de ração, dietas terapêuticas e suporte à alimentação enteral e parenteral.',
+  },
+  {
+    icon: Bone,
+    title: 'Ortopedia e Fisioterapia',
+    desc: 'Imobilizações, bandagens, exercícios de reabilitação física e hidroterapia animal.',
+  },
+  {
+    icon: Activity,
+    title: 'Anestesiologia',
+    desc: 'Monitoramento anestésico, controle de vias aéreas e suporte ao médico anestesista.',
+  },
 ]
 
 export default function Modules() {
   const { ref, inView } = useReveal()
 
   return (
-    <section id="modules" ref={ref} className="py-24 px-6 md:px-10 bg-white">
+    <section id="modulos" ref={ref} className="py-20 md:py-24 px-5 md:px-8 bg-surface">
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}
-        <div className="grid md:grid-cols-2 gap-6 items-end mb-14">
-          <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7 }}
-          >
-            <p
-              className="text-[0.8rem] font-semibold uppercase tracking-[0.15em] text-green-bio mb-4"
-              style={{ fontFamily: "'Nunito', sans-serif" }}
-            >
-              Grade Curricular
-            </p>
-            <h2
-              className="text-[2.2rem] md:text-[2.8rem] font-semibold text-ink leading-tight"
-              style={{ fontFamily: "'Fredoka', sans-serif" }}
-            >
-              O que você vai{' '}
-              <span className="text-gradient">aprender</span>
-            </h2>
-          </motion.div>
-          <motion.p
-            initial={{ opacity: 0, y: 28 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.1, duration: 0.7 }}
-            className="text-ink-soft text-[0.95rem] leading-relaxed md:text-right"
-            style={{ fontFamily: "'Nunito', sans-serif" }}
-          >
-            Grade desenvolvida por veterinários especialistas, focada em habilidades
-            reais do mercado de trabalho.
-          </motion.p>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-14 max-w-2xl mx-auto"
+        >
+          <div className="section-divider mx-auto" />
+          <p className="section-label mb-3">Grade Curricular</p>
+          <h2 className="section-heading mb-4">
+            O que você vai aprender
+          </h2>
+          <p className="body-copy">
+            Grade desenvolvida por veterinários que atuam no mercado, com foco
+            em habilidades práticas que clínicas e hospitais realmente precisam.
+          </p>
+        </motion.div>
 
         {/* Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-          {modules.map(({ icon: Icon, title, tag, color }, i) => (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {services.map(({ icon: Icon, title, desc }, i) => (
             <motion.div
               key={title}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.055, duration: 0.6, ease: [0.25,0.46,0.45,0.94] }}
-              className="group p-5 rounded-2xl border border-gray-100 bg-white hover-lift cursor-default"
-              style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
+              className="bg-white rounded-xl p-6 card-lift border border-line"
             >
               <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110"
-                style={{ background: `${color}10` }}
+                className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
+                style={{ background: '#e8f5ed' }}
               >
-                <Icon size={20} style={{ color }} strokeWidth={1.8} />
+                <Icon size={22} style={{ color: '#1f7a3c' }} strokeWidth={1.8} />
               </div>
-              <p
-                className="font-semibold text-ink text-[0.9rem] leading-snug mb-1.5"
+              <h3
+                className="font-bold text-ink text-[1rem] mb-2"
                 style={{ fontFamily: "'Fredoka', sans-serif" }}
               >
                 {title}
-              </p>
-              <span
-                className="inline-block text-[0.7rem] font-semibold px-2 py-0.5 rounded-full"
-                style={{ background: `${color}10`, color }}
-              >
-                {tag}
-              </span>
+              </h3>
+              <p className="body-copy text-[0.85rem] leading-relaxed">{desc}</p>
             </motion.div>
           ))}
-        </div>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.7, duration: 0.6 }}
-          className="mt-12 flex justify-center"
-        >
-          <a
-            href="https://wa.me/5581999999999?text=Quero+a+grade+completa+do+curso"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-white font-semibold text-[0.9rem] hover-lift"
-            style={{
-              background: 'linear-gradient(135deg, #2d6a1f, #4a8a2a)',
-              boxShadow: '0 6px 24px rgba(45,106,31,0.35)',
-              fontFamily: "'Nunito', sans-serif",
-            }}
+          {/* CTA card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.62, duration: 0.6 }}
+            className="rounded-xl p-6 flex flex-col justify-between"
+            style={{ background: '#1f7a3c' }}
           >
-            Ver grade completa
-          </a>
-        </motion.div>
+            <div>
+              <p
+                className="text-white font-bold text-[1.15rem] mb-3"
+                style={{ fontFamily: "'Fredoka', sans-serif" }}
+              >
+                Quer ver a grade completa?
+              </p>
+              <p className="text-white/70 text-[0.85rem] leading-relaxed mb-6" style={{ fontFamily: "'Nunito', sans-serif" }}>
+                Fale com a equipe da Cemevet e receba o cronograma detalhado da sua turma.
+              </p>
+            </div>
+            <a
+              href="https://wa.me/5581999999999?text=Quero+a+grade+completa+do+curso"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-white rounded-lg font-bold text-brand text-[0.85rem] hover:bg-brand-pale transition-colors"
+              style={{ fontFamily: "'Nunito', sans-serif" }}
+            >
+              Solicitar grade →
+            </a>
+          </motion.div>
+        </div>
       </div>
     </section>
   )
