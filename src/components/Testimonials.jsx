@@ -1,89 +1,95 @@
 import { motion } from 'framer-motion'
 import { useReveal } from '../hooks/useReveal'
-import { Star, Quote } from 'lucide-react'
 
 const testimonials = [
   {
     name: 'Ana Luiza S.',
-    role: 'Auxiliar Vet. • Clínica VetLife Recife',
-    text: 'Antes da Cemevet eu mal sabia o que fazia um auxiliar veterinário. Hoje trabalho em uma clínica incrível, fui contratada no segundo mês de estágio. Não existe curso como esse em Camaragibe.',
-    stars: 5,
-    emoji: '🐕',
-    bg: '#f4fdf0',
-    border: '#a8d5a2',
+    role: 'Auxiliar Vet. · VetLife Recife',
+    initials: 'AL',
+    avatarColor: ['#2d6a1f', '#4a8a2a'],
+    text: 'Antes da Cemevet eu mal sabia o que fazia um auxiliar veterinário. Hoje trabalho em uma clínica incrível — fui contratada no segundo mês de estágio. Não existe formação como essa em Camaragibe.',
     highlight: 'fui contratada no segundo mês de estágio',
+    border: '#a8d5a2',
+    bg: '#f7fcf5',
   },
   {
     name: 'Marcos V.',
-    role: 'Auxiliar Vet. • Hospital Vet. PetCare',
-    text: 'O workshop de silvestres mudou minha visão completamente. Trabalhar com aves e répteis era um sonho. A Cemevet tornou isso possível. Os professores são veterinários que vivem isso todo dia.',
-    stars: 5,
-    emoji: '🦜',
-    bg: '#f0f7ff',
-    border: '#bfdbfe',
+    role: 'Auxiliar Vet. · Hospital PetCare',
+    initials: 'MV',
+    avatarColor: ['#1d6fa4', '#2563eb'],
+    text: 'O workshop de silvestres mudou minha visão completamente. Trabalhar com aves e répteis era um sonho. A Cemevet tornou isso possível. Os professores vivem isso todo dia.',
     highlight: 'tornou isso possível',
+    border: '#bfdbfe',
+    bg: '#f6faff',
   },
   {
     name: 'Juliana M.',
-    role: 'Auxiliar Vet. • Clínica Bem-Estar Animal',
-    text: 'Tenho muito orgulho de ter o certificado CRMV. Quando mostro para empregadores, eles levam a sério. É diferente de um cursinho qualquer. A estrutura de laboratório é excelente.',
-    stars: 5,
-    emoji: '🏆',
-    bg: '#fffbeb',
-    border: '#fde68a',
+    role: 'Auxiliar Vet. · Clínica Bem-Estar',
+    initials: 'JM',
+    avatarColor: ['#d97706', '#f59e0b'],
+    text: 'Tenho muito orgulho do certificado CRMV. Quando mostro para empregadores, eles levam a sério. A estrutura de laboratório é excelente — muito diferente de um cursinho qualquer.',
     highlight: 'eles levam a sério',
+    border: '#fde68a',
+    bg: '#fffdf0',
   },
   {
     name: 'Pedro H.',
-    role: 'Estagiário • Centro de Reab. de Fauna',
-    text: 'Nunca pensei que ia trabalhar reabilitando animais silvestres. A Cemevet abriu esse caminho. Os professores te preparam não só tecnicamente, mas emocionalmente para lidar com animais em sofrimento.',
-    stars: 5,
-    emoji: '🦅',
-    bg: '#fff5f5',
-    border: '#fecaca',
+    role: 'Estagiário · Centro de Reab. de Fauna',
+    initials: 'PH',
+    avatarColor: ['#7c3aed', '#9333ea'],
+    text: 'Nunca pensei que ia trabalhar reabilitando animais silvestres. A Cemevet abriu esse caminho. Os professores te preparam não só tecnicamente, mas emocionalmente.',
     highlight: 'te preparam não só tecnicamente',
+    border: '#e9d5ff',
+    bg: '#faf5ff',
   },
   {
     name: 'Camila R.',
-    role: 'Auxiliar Vet. • Clínica Felinos & Cia',
-    text: 'Já tinha tentado outros cursos online. Nada se compara à aula prática real. Na Cemevet eu aprendi a fazer venopunção, curativo, sondagem... saí de lá sabendo fazer de verdade.',
-    stars: 5,
-    emoji: '🐈',
-    bg: '#f0fdf4',
-    border: '#bbf7d0',
+    role: 'Auxiliar Vet. · Clínica Felinos & Cia',
+    initials: 'CR',
+    avatarColor: ['#059669', '#10b981'],
+    text: 'Já tinha tentado outros cursos online. Nada se compara à aula prática real. Na Cemevet aprendi venopunção, curativo, sondagem — saí de lá sabendo fazer de verdade.',
     highlight: 'sabendo fazer de verdade',
+    border: '#bbf7d0',
+    bg: '#f2fbf6',
   },
   {
     name: 'Diego F.',
-    role: 'Auxiliar Vet. • Hospital Vet. Esperança',
-    text: 'O estágio foi garantido mesmo. Asssinei o contrato antes de começar. Nunca vi isso em outro lugar. Hoje estou no hospital há 8 meses e já sou referência na equipe de emergência.',
-    stars: 5,
-    emoji: '💚',
-    bg: '#faf5ff',
-    border: '#e9d5ff',
+    role: 'Auxiliar Vet. · Hospital Esperança',
+    initials: 'DF',
+    avatarColor: ['#374151', '#4b5563'],
+    text: 'O estágio foi garantido mesmo — assinei o contrato antes de começar. Nunca vi isso em outro lugar. Hoje estou no hospital há 8 meses e já sou referência na equipe de emergência.',
     highlight: 'já sou referência na equipe',
+    border: '#d1d5db',
+    bg: '#f9fafb',
   },
 ]
 
-function StarRating({ count }) {
+function Stars() {
   return (
     <div className="flex gap-0.5">
-      {[...Array(count)].map((_, i) => (
-        <Star key={i} size={13} fill="#fbbf24" className="text-yellow-400" />
+      {[...Array(5)].map((_, i) => (
+        <svg key={i} width="12" height="12" viewBox="0 0 24 24" fill="#fbbf24">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+        </svg>
       ))}
     </div>
   )
 }
 
-function highlightText(text, highlight) {
+function mark(text, highlight) {
   const parts = text.split(highlight)
   if (parts.length < 2) return text
   return (
     <>
       {parts[0]}
       <mark
-        className="font-bold rounded-sm px-0.5"
-        style={{ background: 'rgba(109,184,92,0.2)', color: '#2d6a1f', textDecoration: 'none' }}
+        style={{
+          background: 'rgba(45,106,31,0.12)',
+          color: '#2d6a1f',
+          borderRadius: '2px',
+          padding: '0 2px',
+        }}
+        className="font-semibold"
       >
         {highlight}
       </mark>
@@ -96,78 +102,79 @@ export default function Testimonials() {
   const { ref, inView } = useReveal()
 
   return (
-    <section id="testimonials" ref={ref} className="py-20 px-5 md:px-8 bg-cream overflow-hidden">
+    <section id="testimonials" ref={ref} className="py-24 px-6 md:px-10 bg-white overflow-hidden">
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-14"
-        >
-          <span
-            className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-4"
-            style={{ background: '#e8f5e3', color: '#2d6a1f', fontFamily: "'Nunito', sans-serif" }}
-          >
-            ✦ Histórias Reais
-          </span>
-          <h2
-            className="text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900"
-            style={{ fontFamily: "'Fredoka', sans-serif" }}
-          >
-            Quem passou pela Cemevet{' '}
-            <span className="text-gradient">não volta atrás</span>
-          </h2>
-          <p
-            className="mt-4 text-lg text-gray-500 max-w-xl mx-auto"
-            style={{ fontFamily: "'Nunito', sans-serif" }}
-          >
-            Depoimentos de alunos que transformaram sua relação com os animais
-            em uma carreira de verdade.
-          </p>
-        </motion.div>
 
-        {/* Masonry grid */}
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-5 space-y-5">
-          {testimonials.map(({ name, role, text, stars, emoji, bg, border, highlight }, i) => (
+        {/* Header */}
+        <div className="grid md:grid-cols-2 gap-6 items-end mb-14">
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7 }}
+          >
+            <p
+              className="text-[0.8rem] font-semibold uppercase tracking-[0.15em] text-green-bio mb-4"
+              style={{ fontFamily: "'Nunito', sans-serif" }}
+            >
+              Histórias Reais
+            </p>
+            <h2
+              className="text-[2.2rem] md:text-[2.8rem] font-semibold text-ink leading-tight"
+              style={{ fontFamily: "'Fredoka', sans-serif" }}
+            >
+              Quem passou pela Cemevet{' '}
+              <span className="text-gradient">não volta atrás</span>
+            </h2>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.1, duration: 0.7 }}
+            className="md:text-right"
+          >
+            <p
+              className="text-[2.5rem] font-bold text-ink mb-1"
+              style={{ fontFamily: "'Fredoka', sans-serif" }}
+            >
+              4.9<span className="text-green-bio">/5</span>
+            </p>
+            <Stars />
+            <p className="text-ink-soft text-[0.8rem] mt-1" style={{ fontFamily: "'Nunito', sans-serif" }}>
+              Média de 200+ avaliações
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Masonry */}
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-5">
+          {testimonials.map(({ name, role, initials, avatarColor, text, highlight, border, bg }, i) => (
             <motion.div
               key={name}
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
-              animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-              transition={{ delay: i * 0.1, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="break-inside-avoid p-6 rounded-2xl card-hover"
+              initial={{ opacity: 0, y: 28 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: i * 0.09, duration: 0.65, ease: [0.25,0.46,0.45,0.94] }}
+              className="break-inside-avoid mb-5 p-6 rounded-2xl hover-lift"
               style={{ background: bg, border: `1.5px solid ${border}` }}
             >
-              {/* Quote icon */}
-              <div className="flex items-center justify-between mb-4">
-                <StarRating count={stars} />
-                <span className="text-2xl">{emoji}</span>
-              </div>
-
-              {/* Text */}
+              <Stars />
               <p
-                className="text-gray-700 text-sm leading-relaxed mb-5"
+                className="text-ink-mid text-[0.88rem] leading-relaxed mt-4 mb-5"
                 style={{ fontFamily: "'Nunito', sans-serif" }}
               >
-                "{highlightText(text, highlight)}"
+                "{mark(text, highlight)}"
               </p>
-
-              {/* Author */}
               <div className="flex items-center gap-3">
                 <div
-                  className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-white"
-                  style={{ background: 'linear-gradient(135deg, #2d6a1f, #6db85c)' }}
+                  className="w-9 h-9 rounded-full flex items-center justify-center text-[0.75rem] font-bold text-white shrink-0"
+                  style={{ background: `linear-gradient(135deg, ${avatarColor[0]}, ${avatarColor[1]})` }}
                 >
-                  {name.charAt(0)}
+                  {initials}
                 </div>
                 <div>
-                  <p
-                    className="font-semibold text-gray-800 text-sm"
-                    style={{ fontFamily: "'Nunito', sans-serif" }}
-                  >
+                  <p className="font-semibold text-ink text-[0.875rem]" style={{ fontFamily: "'Nunito', sans-serif" }}>
                     {name}
                   </p>
-                  <p className="text-gray-400 text-xs" style={{ fontFamily: "'Nunito', sans-serif" }}>
+                  <p className="text-ink-soft text-[0.75rem]" style={{ fontFamily: "'Nunito', sans-serif" }}>
                     {role}
                   </p>
                 </div>
@@ -176,43 +183,37 @@ export default function Testimonials() {
           ))}
         </div>
 
-        {/* Summary bar */}
+        {/* Bottom CTA bar */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.8, duration: 0.6 }}
-          className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 p-6 rounded-2xl bg-white"
-          style={{ boxShadow: '0 4px 20px rgba(45,106,31,0.08)', border: '1px solid #e8f5e3' }}
+          transition={{ delay: 0.75, duration: 0.6 }}
+          className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-5 p-7 rounded-2xl bg-cream border border-green-mist"
         >
-          <div className="text-center">
-            <p className="text-3xl font-bold text-green-bio" style={{ fontFamily: "'Fredoka', sans-serif" }}>4.9/5</p>
-            <StarRating count={5} />
-            <p className="text-xs text-gray-400 mt-1" style={{ fontFamily: "'Nunito', sans-serif" }}>Média geral</p>
+          <div className="flex gap-8 text-center sm:text-left">
+            {[
+              { v: '100%', l: 'Recomendam o curso' },
+              { v: '+200', l: 'Alunos formados' },
+              { v: '73%', l: 'Contratados pelos parceiros' },
+            ].map(({ v, l }) => (
+              <div key={l}>
+                <p className="text-[1.5rem] font-bold text-green-bio" style={{ fontFamily: "'Fredoka', sans-serif" }}>{v}</p>
+                <p className="text-ink-soft text-[0.75rem]" style={{ fontFamily: "'Nunito', sans-serif" }}>{l}</p>
+              </div>
+            ))}
           </div>
-          <div className="w-px h-12 bg-gray-200 hidden sm:block" />
-          <div className="text-center">
-            <p className="text-3xl font-bold text-green-bio" style={{ fontFamily: "'Fredoka', sans-serif" }}>+200</p>
-            <p className="text-xs text-gray-400" style={{ fontFamily: "'Nunito', sans-serif" }}>Alunos formados</p>
-          </div>
-          <div className="w-px h-12 bg-gray-200 hidden sm:block" />
-          <div className="text-center">
-            <p className="text-3xl font-bold text-green-bio" style={{ fontFamily: "'Fredoka', sans-serif" }}>100%</p>
-            <p className="text-xs text-gray-400" style={{ fontFamily: "'Nunito', sans-serif" }}>Recomendam o curso</p>
-          </div>
-          <div className="hidden sm:block">
-            <a
-              href="https://wa.me/5581999999999?text=Quero+conhecer+a+Cemevet"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-2.5 rounded-full text-white font-semibold text-sm transition-all hover:scale-105"
-              style={{
-                background: 'linear-gradient(135deg, #2d6a1f, #4a8a2a)',
-                fontFamily: "'Nunito', sans-serif",
-              }}
-            >
-              Quero ser o próximo →
-            </a>
-          </div>
+          <a
+            href="https://wa.me/5581999999999?text=Quero+conhecer+a+Cemevet"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-2.5 rounded-full text-white font-semibold text-[0.88rem] transition-all hover:scale-105 hover:shadow-lg whitespace-nowrap"
+            style={{
+              background: 'linear-gradient(135deg, #2d6a1f, #4a8a2a)',
+              fontFamily: "'Nunito', sans-serif",
+            }}
+          >
+            Quero ser o próximo
+          </a>
         </motion.div>
       </div>
     </section>

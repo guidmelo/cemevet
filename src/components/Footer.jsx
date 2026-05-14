@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { PawPrint, MapPin, Phone } from 'lucide-react'
 
 function InstagramIcon({ size = 16 }) {
@@ -17,41 +16,55 @@ function FacebookIcon({ size = 16 }) {
   )
 }
 
+const navLinks = [
+  { label: 'Como é estudar',    href: '#journey' },
+  { label: 'Módulos',          href: '#modules' },
+  { label: 'Workshop Silvestres', href: '#wildlife' },
+  { label: 'Estágio Garantido', href: '#internship' },
+  { label: 'Depoimentos',      href: '#testimonials' },
+]
+
 export default function Footer() {
   return (
     <footer
-      className="relative overflow-hidden pt-16 pb-8 px-5 md:px-8"
-      style={{ background: 'linear-gradient(160deg, #1a3a0a 0%, #2d6a1f 100%)' }}
+      className="relative overflow-hidden pt-20 pb-8 px-6 md:px-10"
+      style={{ background: 'linear-gradient(150deg, #0d1f06 0%, #1a3a0a 40%, #2d6a1f 100%)' }}
     >
       {/* Blobs */}
       <div
-        className="absolute top-0 right-0 w-96 h-96 opacity-10 blob-2"
+        className="absolute top-0 right-0 w-[400px] h-[400px] pointer-events-none opacity-10 blob-2"
         style={{ background: 'radial-gradient(circle, #6db85c, transparent)' }}
       />
       <div
-        className="absolute bottom-0 left-0 w-72 h-72 opacity-10 blob-1"
+        className="absolute bottom-0 left-0 w-[300px] h-[300px] pointer-events-none opacity-10 blob-1"
         style={{ background: 'radial-gradient(circle, #a8d5a2, transparent)' }}
       />
 
       <div className="max-w-6xl mx-auto relative z-10">
-        {/* Top CTA strip */}
+
+        {/* Final CTA block */}
         <div
-          className="rounded-3xl p-8 md:p-10 mb-14 text-center"
+          className="rounded-3xl p-10 md:p-14 mb-16 text-center"
           style={{
-            background: 'rgba(255,255,255,0.07)',
-            border: '1px solid rgba(255,255,255,0.12)',
-            backdropFilter: 'blur(12px)',
+            background: 'rgba(255,255,255,0.06)',
+            border: '1px solid rgba(255,255,255,0.10)',
+            backdropFilter: 'blur(16px)',
           }}
         >
-          <p className="text-4xl mb-3">🐾</p>
+          <p
+            className="text-[0.8rem] font-semibold uppercase tracking-[0.15em] mb-4"
+            style={{ color: '#a8d5a2', fontFamily: "'Nunito', sans-serif" }}
+          >
+            Próximo passo
+          </p>
           <h2
-            className="text-2xl md:text-3xl font-semibold text-white mb-3"
+            className="text-[2rem] md:text-[2.6rem] font-semibold text-white mb-3 leading-tight"
             style={{ fontFamily: "'Fredoka', sans-serif" }}
           >
             Pronto para começar sua jornada?
           </h2>
           <p
-            className="text-white/70 mb-6 text-base"
+            className="text-white/55 mb-8 text-[0.95rem] max-w-md mx-auto"
             style={{ fontFamily: "'Nunito', sans-serif" }}
           >
             Vagas limitadas por turma. Garanta a sua agora.
@@ -61,19 +74,19 @@ export default function Footer() {
               href="https://wa.me/5581999999999?text=Quero+me+matricular+na+Cemevet"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-3.5 rounded-full font-bold text-green-bio bg-white transition-all hover:scale-105 hover:shadow-xl text-base"
+              className="px-8 py-3.5 rounded-full font-bold text-green-bio bg-white text-[0.95rem] transition-all hover:scale-105 hover:shadow-2xl"
               style={{ fontFamily: "'Nunito', sans-serif" }}
             >
-              Quero me matricular agora →
+              Quero me matricular agora
             </a>
             <a
               href="https://wa.me/5581999999999?text=Quero+tirar+dúvidas"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-3.5 rounded-full font-semibold text-white text-base transition-all hover:scale-105"
+              className="px-8 py-3.5 rounded-full font-semibold text-white text-[0.95rem] transition-all hover:bg-white/15"
               style={{
-                background: 'rgba(255,255,255,0.1)',
-                border: '1.5px solid rgba(255,255,255,0.25)',
+                background: 'rgba(255,255,255,0.09)',
+                border: '1.5px solid rgba(255,255,255,0.18)',
                 fontFamily: "'Nunito', sans-serif",
               }}
             >
@@ -82,71 +95,67 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Footer grid */}
-        <div className="grid md:grid-cols-3 gap-8 mb-10">
+        {/* Footer columns */}
+        <div className="grid md:grid-cols-3 gap-10 mb-10">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded-full bg-green-glow/20 flex items-center justify-center border border-green-glow/30">
-                <PawPrint size={18} className="text-green-pale" />
+            <div className="flex items-center gap-2.5 mb-5">
+              <div
+                className="w-8 h-8 rounded-full flex items-center justify-center"
+                style={{ background: 'rgba(168,213,162,0.15)', border: '1px solid rgba(168,213,162,0.25)' }}
+              >
+                <PawPrint size={16} className="text-green-pale" strokeWidth={1.8} />
               </div>
               <span
-                className="text-xl font-semibold text-white"
+                className="text-[1.1rem] font-semibold text-white"
                 style={{ fontFamily: "'Fredoka', sans-serif" }}
               >
                 Cemevet Cursos
               </span>
             </div>
             <p
-              className="text-white/60 text-sm leading-relaxed mb-4"
+              className="text-white/50 text-[0.85rem] leading-relaxed mb-5"
               style={{ fontFamily: "'Nunito', sans-serif" }}
             >
-              Formando auxiliares veterinários com estágio garantido e
-              certificação CRMV em Camaragibe, Pernambuco.
+              Formando auxiliares veterinários com estágio garantido
+              e certificação CRMV em Camaragibe, Pernambuco.
             </p>
             <div className="flex gap-3">
               {[
-                { icon: InstagramIcon, label: 'Instagram', href: '#' },
-                { icon: FacebookIcon, label: 'Facebook', href: '#' },
-              ].map(({ icon: Icon, label, href }) => (
+                { Icon: InstagramIcon, label: 'Instagram' },
+                { Icon: FacebookIcon,  label: 'Facebook' },
+              ].map(({ Icon, label }) => (
                 <a
                   key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#"
+                  aria-label={label}
                   className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:scale-110"
                   style={{
-                    background: 'rgba(255,255,255,0.1)',
-                    border: '1px solid rgba(255,255,255,0.15)',
+                    background: 'rgba(255,255,255,0.08)',
+                    border: '1px solid rgba(255,255,255,0.12)',
+                    color: 'rgba(255,255,255,0.5)',
                   }}
-                  aria-label={label}
                 >
-                  <Icon size={16} className="text-white/70" />
+                  <Icon size={15} />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Links */}
+          {/* Nav */}
           <div>
             <h3
-              className="font-semibold text-white mb-4 text-sm uppercase tracking-wider"
+              className="text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-white/40 mb-5"
               style={{ fontFamily: "'Nunito', sans-serif" }}
             >
               Navegação
             </h3>
-            <ul className="flex flex-col gap-2.5">
-              {[
-                { label: 'Como é estudar', href: '#journey' },
-                { label: 'Módulos', href: '#modules' },
-                { label: 'Workshop Silvestres', href: '#wildlife' },
-                { label: 'Estágio Garantido', href: '#internship' },
-                { label: 'Depoimentos', href: '#testimonials' },
-              ].map(({ label, href }) => (
+            <ul className="flex flex-col gap-3">
+              {navLinks.map(({ label, href }) => (
                 <li key={href}>
                   <a
                     href={href}
-                    className="text-white/60 text-sm hover:text-white transition-colors"
+                    className="text-white/55 text-[0.88rem] hover:text-white transition-colors"
                     style={{ fontFamily: "'Nunito', sans-serif" }}
                   >
                     {label}
@@ -159,24 +168,24 @@ export default function Footer() {
           {/* Contact */}
           <div>
             <h3
-              className="font-semibold text-white mb-4 text-sm uppercase tracking-wider"
+              className="text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-white/40 mb-5"
               style={{ fontFamily: "'Nunito', sans-serif" }}
             >
               Contato
             </h3>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-4">
               <div className="flex items-start gap-3">
-                <MapPin size={16} className="text-green-pale mt-0.5 shrink-0" />
-                <p className="text-white/60 text-sm" style={{ fontFamily: "'Nunito', sans-serif" }}>
+                <MapPin size={15} className="text-green-pale mt-0.5 shrink-0" strokeWidth={1.8} />
+                <p className="text-white/55 text-[0.875rem] leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
                   Camaragibe, Pernambuco<br />
                   Grande Recife — PE
                 </p>
               </div>
               <div className="flex items-center gap-3">
-                <Phone size={16} className="text-green-pale shrink-0" />
+                <Phone size={15} className="text-green-pale shrink-0" strokeWidth={1.8} />
                 <a
                   href="https://wa.me/5581999999999"
-                  className="text-white/60 text-sm hover:text-white transition-colors"
+                  className="text-white/55 text-[0.875rem] hover:text-white transition-colors"
                   style={{ fontFamily: "'Nunito', sans-serif" }}
                 >
                   (81) 9 9999-9999
@@ -186,16 +195,16 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom bar */}
+        {/* Bottom */}
         <div
-          className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3"
-          style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}
+          className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-2"
+          style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}
         >
-          <p className="text-white/40 text-xs" style={{ fontFamily: "'Nunito', sans-serif" }}>
+          <p className="text-white/30 text-[0.78rem]" style={{ fontFamily: "'Nunito', sans-serif" }}>
             © {new Date().getFullYear()} Cemevet Cursos. Todos os direitos reservados.
           </p>
-          <p className="text-white/30 text-xs" style={{ fontFamily: "'Nunito', sans-serif" }}>
-            Camaragibe • Recife • Pernambuco
+          <p className="text-white/25 text-[0.78rem]" style={{ fontFamily: "'Nunito', sans-serif" }}>
+            Camaragibe · Recife · Pernambuco
           </p>
         </div>
       </div>

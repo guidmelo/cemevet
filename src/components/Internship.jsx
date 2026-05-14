@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useReveal } from '../hooks/useReveal'
-import { CheckCircle2, Building2, Star, TrendingUp } from 'lucide-react'
+import { CheckCircle2, TrendingUp, Building2, Star } from 'lucide-react'
 
 const benefits = [
   'Estágio em clínicas e hospitais veterinários parceiros',
@@ -12,33 +12,34 @@ const benefits = [
 ]
 
 const stats = [
-  { value: '100%', label: 'dos alunos fazem estágio', icon: CheckCircle2 },
-  { value: '73%', label: 'são contratados pelos parceiros', icon: TrendingUp },
-  { value: '15+', label: 'clínicas parceiras em PE', icon: Building2 },
-  { value: '4.9★', label: 'avaliação dos supervisores', icon: Star },
+  { value: '100%', label: 'dos alunos fazem estágio',         icon: CheckCircle2 },
+  { value: '73%',  label: 'são contratados pelos parceiros',  icon: TrendingUp },
+  { value: '15+',  label: 'clínicas parceiras em PE',         icon: Building2 },
+  { value: '4.9',  label: 'avaliação média dos supervisores', icon: Star },
 ]
 
 export default function Internship() {
   const { ref, inView } = useReveal()
 
   return (
-    <section id="internship" ref={ref} className="py-20 px-5 md:px-8 bg-off-white overflow-hidden">
+    <section id="internship" ref={ref} className="py-24 px-6 md:px-10 bg-cream overflow-hidden">
       <div className="max-w-6xl mx-auto">
+
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 28 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center mb-14"
+          className="mb-16"
         >
-          <span
-            className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-4"
-            style={{ background: '#e8f5e3', color: '#2d6a1f', fontFamily: "'Nunito', sans-serif" }}
+          <p
+            className="text-[0.8rem] font-semibold uppercase tracking-[0.15em] text-green-bio mb-4"
+            style={{ fontFamily: "'Nunito', sans-serif" }}
           >
-            ✦ Nosso Diferencial
-          </span>
+            Nosso Diferencial
+          </p>
           <h2
-            className="text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900"
+            className="text-[2.2rem] md:text-[2.8rem] font-semibold text-ink leading-tight max-w-2xl"
             style={{ fontFamily: "'Fredoka', sans-serif" }}
           >
             <span className="text-gradient">Estágio garantido.</span>
@@ -46,7 +47,7 @@ export default function Internship() {
             Não é promessa — é compromisso.
           </h2>
           <p
-            className="mt-4 text-lg text-gray-500 max-w-2xl mx-auto"
+            className="mt-4 text-ink-soft text-[0.95rem] leading-relaxed max-w-xl"
             style={{ fontFamily: "'Nunito', sans-serif" }}
           >
             Enquanto a maioria dos cursos entrega um diploma e te deseja boa sorte,
@@ -55,65 +56,61 @@ export default function Internship() {
         </motion.div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-14">
           {stats.map(({ value, label, icon: Icon }, i) => (
             <motion.div
               key={label}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
-              className="text-center p-6 rounded-2xl bg-white card-hover"
-              style={{ boxShadow: '0 4px 20px rgba(45,106,31,0.08)', border: '1px solid #e8f5e3' }}
+              transition={{ delay: i * 0.09, duration: 0.65 }}
+              className="p-6 rounded-2xl bg-white border border-green-mist"
+              style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
             >
               <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center mx-auto mb-3"
-                style={{ background: '#e8f5e3' }}
+                className="w-9 h-9 rounded-xl flex items-center justify-center mb-4"
+                style={{ background: '#edf7ea' }}
               >
-                <Icon size={20} style={{ color: '#2d6a1f' }} />
+                <Icon size={18} style={{ color: '#2d6a1f' }} strokeWidth={1.8} />
               </div>
               <p
-                className="text-3xl font-bold text-green-bio mb-1"
+                className="text-[2rem] font-bold text-green-bio leading-none mb-1"
                 style={{ fontFamily: "'Fredoka', sans-serif" }}
               >
                 {value}
               </p>
-              <p className="text-xs text-gray-500" style={{ fontFamily: "'Nunito', sans-serif" }}>
+              <p className="text-ink-soft text-[0.78rem] leading-snug" style={{ fontFamily: "'Nunito', sans-serif" }}>
                 {label}
               </p>
             </motion.div>
           ))}
         </div>
 
-        {/* Content split */}
+        {/* Two-col layout */}
         <div className="grid md:grid-cols-2 gap-10 items-center">
-          {/* Left: benefits */}
+
+          {/* Benefits list */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: -32 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: 0.4, duration: 0.8 }}
+            transition={{ delay: 0.35, duration: 0.8 }}
           >
             <h3
-              className="text-2xl font-semibold text-gray-800 mb-6"
+              className="text-[1.5rem] font-semibold text-ink mb-7"
               style={{ fontFamily: "'Fredoka', sans-serif" }}
             >
-              O que o estágio inclui:
+              O que o estágio inclui
             </h3>
-            <ul className="flex flex-col gap-3">
+            <ul className="flex flex-col gap-4">
               {benefits.map((b, i) => (
                 <motion.li
                   key={b}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -16 }}
                   animate={inView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: 0.5 + i * 0.08, duration: 0.5 }}
-                  className="flex items-start gap-3"
+                  transition={{ delay: 0.45 + i * 0.07, duration: 0.5 }}
+                  className="flex items-start gap-3.5"
                 >
-                  <div
-                    className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5"
-                    style={{ background: '#e8f5e3' }}
-                  >
-                    <CheckCircle2 size={14} style={{ color: '#2d6a1f' }} />
-                  </div>
-                  <span className="text-gray-600 text-sm leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
+                  <CheckCircle2 size={18} style={{ color: '#2d6a1f', marginTop: '2px', flexShrink: 0 }} strokeWidth={2} />
+                  <span className="text-ink-soft text-[0.9rem] leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
                     {b}
                   </span>
                 </motion.li>
@@ -121,58 +118,69 @@ export default function Internship() {
             </ul>
           </motion.div>
 
-          {/* Right: visual card */}
+          {/* Visual card */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 32 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: 0.5, duration: 0.8 }}
+            transition={{ delay: 0.45, duration: 0.8 }}
           >
             <div
-              className="relative rounded-3xl p-8 overflow-hidden"
+              className="rounded-3xl p-8 md:p-9 overflow-hidden relative"
               style={{
-                background: 'linear-gradient(135deg, #2d6a1f 0%, #4a8a2a 100%)',
-                boxShadow: '0 20px 60px rgba(45,106,31,0.35)',
+                background: 'linear-gradient(135deg, #1e4210 0%, #2d6a1f 60%, #376a19 100%)',
+                boxShadow: '0 24px 64px rgba(45,106,31,0.35)',
               }}
             >
-              {/* Background blobs */}
               <div
-                className="absolute top-0 right-0 w-48 h-48 opacity-20 blob-1"
+                className="absolute top-0 right-0 w-56 h-56 pointer-events-none blob-2 opacity-15"
                 style={{ background: 'radial-gradient(circle, #a8d5a2, transparent)' }}
               />
-
               <div className="relative z-10">
-                <p
-                  className="text-4xl mb-4"
-                  style={{ fontFamily: "'Fredoka', sans-serif" }}
+                {/* Medical cross icon composed from SVG */}
+                <div
+                  className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
+                  style={{ background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.18)' }}
                 >
-                  🏥
-                </p>
+                  <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
+                    <path d="M12 2v20M2 12h20" />
+                  </svg>
+                </div>
+
                 <h3
-                  className="text-2xl font-semibold text-white mb-3"
+                  className="text-[1.5rem] font-semibold text-white mb-3 leading-snug"
                   style={{ fontFamily: "'Fredoka', sans-serif" }}
                 >
                   Seu primeiro emprego começa aqui
                 </h3>
-                <p className="text-white/80 text-sm leading-relaxed mb-6" style={{ fontFamily: "'Nunito', sans-serif" }}>
+                <p
+                  className="text-white/65 text-[0.9rem] leading-relaxed mb-7"
+                  style={{ fontFamily: "'Nunito', sans-serif" }}
+                >
                   Clínicas, pet shops, hospitais veterinários e centros de reabilitação
                   em Camaragibe e região aguardam nossos alunos. Você não sai daqui
                   sem experiência real.
                 </p>
 
                 <div
-                  className="flex items-center gap-3 p-4 rounded-2xl"
-                  style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)' }}
+                  className="flex items-center gap-4 p-4 rounded-2xl"
+                  style={{ background: 'rgba(255,255,255,0.09)', border: '1px solid rgba(255,255,255,0.14)' }}
                 >
-                  <span className="text-3xl">📋</span>
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                    style={{ background: 'rgba(255,255,255,0.12)' }}
+                  >
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="rgba(168,213,162,0.9)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2" />
+                      <rect x="9" y="3" width="6" height="4" rx="2" />
+                      <path d="M9 12l2 2 4-4" />
+                    </svg>
+                  </div>
                   <div>
-                    <p
-                      className="text-white font-semibold text-sm"
-                      style={{ fontFamily: "'Nunito', sans-serif" }}
-                    >
+                    <p className="text-white font-semibold text-[0.88rem]" style={{ fontFamily: "'Nunito', sans-serif" }}>
                       Contrato de estágio assinado
                     </p>
-                    <p className="text-white/60 text-xs" style={{ fontFamily: "'Nunito', sans-serif" }}>
-                      Antes de você começar a aula
+                    <p className="text-white/50 text-[0.78rem]" style={{ fontFamily: "'Nunito', sans-serif" }}>
+                      Antes de você começar as aulas
                     </p>
                   </div>
                 </div>
