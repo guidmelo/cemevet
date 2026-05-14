@@ -3,6 +3,8 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useReveal } from '../hooks/useReveal'
 import { Plus, Minus } from 'lucide-react'
 
+const G = '#1f7a3c'
+
 const faqs = [
   {
     q: 'Preciso ter experiência prévia com animais?',
@@ -45,25 +47,19 @@ function Item({ q, a, i, inView }) {
       initial={{ opacity: 0, y: 14 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: i * 0.06, duration: 0.5 }}
-      className="border-b border-line last:border-none"
+      style={{ borderBottom: '1px solid #e5e7eb' }}
     >
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between gap-4 py-5 text-left"
+        style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, padding: '20px 0', textAlign: 'left', background: 'none', border: 'none', cursor: 'pointer' }}
       >
-        <span
-          className="font-semibold text-ink text-[0.9rem]"
-          style={{ fontFamily: "'Nunito', sans-serif" }}
-        >
+        <span style={{ fontFamily: 'Nunito, sans-serif', fontWeight: 600, fontSize: '0.9rem', color: '#111827' }}>
           {q}
         </span>
-        <div
-          className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-colors duration-200"
-          style={{ background: open ? '#1f7a3c' : '#e8f5ed' }}
-        >
+        <div style={{ width: 28, height: 28, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, background: open ? G : '#e8f5ed', transition: 'background 0.2s' }}>
           {open
             ? <Minus size={13} color="white" />
-            : <Plus size={13} color="#1f7a3c" />
+            : <Plus size={13} color={G} />
           }
         </div>
       </button>
@@ -73,13 +69,10 @@ function Item({ q, a, i, inView }) {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.28, ease: [0.25,0.46,0.45,0.94] }}
-            className="overflow-hidden"
+            transition={{ duration: 0.28, ease: [0.25, 0.46, 0.45, 0.94] }}
+            style={{ overflow: 'hidden' }}
           >
-            <p
-              className="pb-5 text-[0.875rem] text-ink-soft leading-relaxed"
-              style={{ fontFamily: "'Nunito', sans-serif" }}
-            >
+            <p style={{ fontFamily: 'Nunito, sans-serif', fontSize: '0.875rem', color: '#6b7280', lineHeight: 1.75, paddingBottom: 20 }}>
               {a}
             </p>
           </motion.div>
@@ -93,32 +86,36 @@ export default function FAQ() {
   const { ref, inView } = useReveal()
 
   return (
-    <section id="faq" ref={ref} className="py-20 md:py-24 px-5 md:px-8 bg-surface">
-      <div className="max-w-5xl mx-auto">
+    <section id="faq" ref={ref} style={{ padding: '80px 0', background: '#f9fafb' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 24px' }}>
 
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center mb-12"
+          style={{ textAlign: 'center', marginBottom: 48, maxWidth: 560, margin: '0 auto 48px' }}
         >
-          <div className="section-divider mx-auto" />
-          <p className="section-label mb-3">Dúvidas Frequentes</p>
-          <h2 className="section-heading mb-4">Perguntas frequentes</h2>
-          <p className="body-copy max-w-xl mx-auto">
+          <div style={{ width: 40, height: 3, background: G, borderRadius: 2, margin: '0 auto 16px' }} />
+          <p style={{ fontFamily: 'Nunito, sans-serif', fontSize: 12, fontWeight: 700, color: G, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 12 }}>
+            Dúvidas Frequentes
+          </p>
+          <h2 style={{ fontFamily: 'Fredoka, sans-serif', fontSize: 'clamp(1.75rem, 4vw, 2.4rem)', fontWeight: 600, color: '#111827', lineHeight: 1.15, marginBottom: 16 }}>
+            Perguntas frequentes
+          </h2>
+          <p style={{ fontFamily: 'Nunito, sans-serif', fontSize: '0.9rem', color: '#6b7280', lineHeight: 1.75 }}>
             Não encontrou o que precisava? Fale diretamente com nossa equipe — respondemos em minutos.
           </p>
         </motion.div>
 
         {/* Two-col accordion on desktop */}
         <div className="grid md:grid-cols-2 gap-x-10">
-          <div className="bg-white rounded-2xl px-6 py-2 border border-line">
+          <div style={{ background: '#fff', borderRadius: 16, padding: '0 24px', border: '1px solid #e5e7eb' }}>
             {faqs.slice(0, 4).map((item, i) => (
               <Item key={i} q={item.q} a={item.a} i={i} inView={inView} />
             ))}
           </div>
-          <div className="bg-white rounded-2xl px-6 py-2 border border-line">
+          <div style={{ background: '#fff', borderRadius: 16, padding: '0 24px', border: '1px solid #e5e7eb' }}>
             {faqs.slice(4).map((item, i) => (
               <Item key={i} q={item.q} a={item.a} i={i + 4} inView={inView} />
             ))}
@@ -130,18 +127,19 @@ export default function FAQ() {
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.6, duration: 0.6 }}
-          className="mt-10 text-center"
+          style={{ marginTop: 40, textAlign: 'center' }}
         >
-          <p className="body-copy mb-4">Ainda com dúvidas? Fale com a equipe da Cemevet.</p>
+          <p style={{ fontFamily: 'Nunito, sans-serif', fontSize: '0.9rem', color: '#6b7280', marginBottom: 16 }}>
+            Ainda com dúvidas? Fale com a equipe da Cemevet.
+          </p>
           <a
             href="https://wa.me/5581999999999?text=Olá, tenho uma dúvida sobre o curso de Auxiliar Veterinário da Cemevet"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-lg font-bold text-white text-[0.88rem] transition-all hover:opacity-90"
-            style={{ background: '#25D366', boxShadow: '0 4px 16px rgba(37,211,102,0.3)', fontFamily: "'Nunito', sans-serif" }}
+            target="_blank" rel="noopener noreferrer"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 10, padding: '12px 24px', borderRadius: 8, fontFamily: 'Nunito, sans-serif', fontWeight: 700, fontSize: '0.88rem', color: '#fff', background: '#25D366', boxShadow: '0 4px 16px rgba(37,211,102,0.3)', textDecoration: 'none' }}
           >
             <svg viewBox="0 0 24 24" width="18" height="18" fill="white">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.121 1.533 5.848L0 24l6.335-1.527A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.975 0-3.809-.548-5.373-1.497l-.384-.228-3.982.961.994-3.87-.252-.4A9.808 9.808 0 012.182 12c0-5.421 4.397-9.818 9.818-9.818 5.421 0 9.818 4.397 9.818 9.818 0 5.421-4.397 9.818-9.818 9.818z"/>
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.121 1.533 5.848L0 24l6.335-1.527A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.975 0-3.809-.548-5.373-1.497l-.384-.228-3.982.961.994-3.87-.252-.4A9.808 9.808 0 012.182 12c0-5.421 4.397-9.818 9.818-9.818 5.421 0 9.818 4.397 9.818 9.818 0 5.421-4.397 9.818-9.818 9.818z"/>
             </svg>
             Falar no WhatsApp
           </a>

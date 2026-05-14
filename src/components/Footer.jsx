@@ -1,4 +1,6 @@
-import { MapPin, Phone, Mail } from 'lucide-react'
+import { MapPin, Phone } from 'lucide-react'
+
+const G = '#1f7a3c'
 
 function InstagramIcon({ size = 16 }) {
   return (
@@ -7,6 +9,7 @@ function InstagramIcon({ size = 16 }) {
     </svg>
   )
 }
+
 function FacebookIcon({ size = 16 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
@@ -26,45 +29,32 @@ const navLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-white border-t border-line">
+    <footer style={{ background: '#fff', borderTop: '1px solid #e5e7eb' }}>
 
       {/* Final CTA block */}
-      <div className="py-16 px-5 md:px-8 text-center" style={{ background: '#1f7a3c' }}>
-        <div className="max-w-3xl mx-auto">
-          <p className="section-label mb-4" style={{ color: '#a0d4b0' }}>
+      <div style={{ padding: '64px 24px', textAlign: 'center', background: '#1f7a3c' }}>
+        <div style={{ maxWidth: 680, margin: '0 auto' }}>
+          <p style={{ fontFamily: 'Nunito, sans-serif', fontSize: 12, fontWeight: 700, color: '#a0d4b0', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 16 }}>
             Próximo passo
           </p>
-          <h2
-            className="text-[1.9rem] md:text-[2.4rem] font-semibold text-white mb-4 leading-tight"
-            style={{ fontFamily: "'Fredoka', sans-serif" }}
-          >
+          <h2 style={{ fontFamily: 'Fredoka, sans-serif', fontSize: 'clamp(1.75rem, 4vw, 2.3rem)', fontWeight: 600, color: '#fff', lineHeight: 1.15, marginBottom: 16 }}>
             Pronto para começar sua jornada?
           </h2>
-          <p
-            className="text-white/70 mb-8 text-[0.95rem] max-w-lg mx-auto"
-            style={{ fontFamily: "'Nunito', sans-serif" }}
-          >
+          <p style={{ fontFamily: 'Nunito, sans-serif', fontSize: '0.95rem', color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, marginBottom: 32, maxWidth: 480, margin: '0 auto 32px' }}>
             Vagas limitadas por turma. Fale com a equipe agora e garanta a sua.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
               href="https://wa.me/5581999999999?text=Quero+me+matricular+na+Cemevet"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg bg-white font-bold text-brand text-[0.9rem] transition-all hover:bg-brand-pale hover:scale-[1.02]"
-              style={{ fontFamily: "'Nunito', sans-serif" }}
+              target="_blank" rel="noopener noreferrer"
+              style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '12px 28px', borderRadius: 8, background: '#fff', fontFamily: 'Nunito, sans-serif', fontWeight: 700, fontSize: '0.9rem', color: G, textDecoration: 'none' }}
             >
               Quero me matricular agora
             </a>
             <a
               href="https://wa.me/5581999999999?text=Quero+tirar+duvidas+sobre+a+Cemevet"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg font-semibold text-white text-[0.9rem] transition-all hover:bg-white/15"
-              style={{
-                border: '1.5px solid rgba(255,255,255,0.35)',
-                fontFamily: "'Nunito', sans-serif",
-              }}
+              target="_blank" rel="noopener noreferrer"
+              style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '12px 28px', borderRadius: 8, border: '1.5px solid rgba(255,255,255,0.35)', fontFamily: 'Nunito, sans-serif', fontWeight: 600, fontSize: '0.9rem', color: '#fff', textDecoration: 'none' }}
             >
               Tirar dúvidas
             </a>
@@ -73,16 +63,13 @@ export default function Footer() {
       </div>
 
       {/* Footer content */}
-      <div className="py-12 px-5 md:px-8">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-10">
+      <div style={{ padding: '48px 24px' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }} className="grid md:grid-cols-4 gap-10">
 
           {/* Brand */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2.5 mb-4">
-              <div
-                className="w-9 h-9 rounded-lg flex items-center justify-center"
-                style={{ background: '#1f7a3c' }}
-              >
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
+              <div style={{ width: 36, height: 36, borderRadius: 8, background: G, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M10 5.172C10 3.782 8.423 2.679 6.5 3c-2.823.47-4.113 6.006-4 7 .08.703 1.725 1.722 3.656 1 1.261-.472 1.96-1.45 2.344-2.5"/>
                   <path d="M14.267 5.172c0-1.39 1.577-2.493 3.5-2.172 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.96-1.45-2.344-2.5"/>
@@ -92,25 +79,21 @@ export default function Footer() {
                 </svg>
               </div>
               <div>
-                <p className="font-bold text-ink text-[1rem]" style={{ fontFamily: "'Fredoka', sans-serif" }}>
-                  Cemevet Cursos
-                </p>
-                <p className="text-ink-muted text-[0.68rem]" style={{ fontFamily: "'Nunito', sans-serif" }}>
-                  Auxiliar de Medicina Veterinária
-                </p>
+                <p style={{ fontFamily: 'Fredoka, sans-serif', fontWeight: 700, fontSize: '1rem', color: '#111827', lineHeight: 1.2 }}>Cemevet Cursos</p>
+                <p style={{ fontFamily: 'Nunito, sans-serif', fontSize: '0.68rem', color: '#9ca3af', lineHeight: 1.3 }}>Auxiliar de Medicina Veterinária</p>
               </div>
             </div>
-            <p className="body-copy text-[0.85rem] mb-5 max-w-[280px]">
+            <p style={{ fontFamily: 'Nunito, sans-serif', fontSize: '0.85rem', color: '#6b7280', lineHeight: 1.7, marginBottom: 20, maxWidth: 280 }}>
               Formando auxiliares veterinários com estágio garantido e
               certificação CRMV em Camaragibe, Pernambuco.
             </p>
-            <div className="flex gap-3">
+            <div style={{ display: 'flex', gap: 12 }}>
               {[{ Icon: InstagramIcon, label: 'Instagram' }, { Icon: FacebookIcon, label: 'Facebook' }].map(({ Icon, label }) => (
                 <a
                   key={label}
                   href="#"
                   aria-label={label}
-                  className="w-9 h-9 rounded-lg flex items-center justify-center border border-line text-ink-soft hover:text-brand hover:border-brand transition-colors"
+                  style={{ width: 36, height: 36, borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid #e5e7eb', color: '#6b7280', textDecoration: 'none' }}
                 >
                   <Icon size={15} />
                 </a>
@@ -120,16 +103,13 @@ export default function Footer() {
 
           {/* Links */}
           <div>
-            <p className="font-bold text-ink text-[0.8rem] uppercase tracking-wider mb-4" style={{ fontFamily: "'Nunito', sans-serif" }}>
+            <p style={{ fontFamily: 'Nunito, sans-serif', fontWeight: 700, fontSize: '0.8rem', color: '#111827', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 16 }}>
               Navegação
             </p>
-            <ul className="flex flex-col gap-2.5">
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10 }}>
               {navLinks.map(({ label, href }) => (
                 <li key={href}>
-                  <a
-                    href={href}
-                    className="body-copy text-[0.85rem] hover:text-brand transition-colors"
-                  >
+                  <a href={href} style={{ fontFamily: 'Nunito, sans-serif', fontSize: '0.85rem', color: '#6b7280', textDecoration: 'none' }}>
                     {label}
                   </a>
                 </li>
@@ -139,19 +119,19 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <p className="font-bold text-ink text-[0.8rem] uppercase tracking-wider mb-4" style={{ fontFamily: "'Nunito', sans-serif" }}>
+            <p style={{ fontFamily: 'Nunito, sans-serif', fontWeight: 700, fontSize: '0.8rem', color: '#111827', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 16 }}>
               Contato
             </p>
-            <div className="flex flex-col gap-4">
-              <div className="flex items-start gap-2.5">
-                <MapPin size={15} style={{ color: '#1f7a3c', marginTop: '2px', flexShrink: 0 }} />
-                <p className="body-copy text-[0.85rem]">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+                <MapPin size={15} style={{ color: G, marginTop: 2, flexShrink: 0 }} />
+                <p style={{ fontFamily: 'Nunito, sans-serif', fontSize: '0.85rem', color: '#6b7280', lineHeight: 1.6 }}>
                   Camaragibe, Pernambuco<br />Grande Recife — PE
                 </p>
               </div>
-              <div className="flex items-center gap-2.5">
-                <Phone size={15} style={{ color: '#1f7a3c', flexShrink: 0 }} />
-                <a href="https://wa.me/5581999999999" className="body-copy text-[0.85rem] hover:text-brand transition-colors">
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <Phone size={15} style={{ color: G, flexShrink: 0 }} />
+                <a href="https://wa.me/5581999999999" style={{ fontFamily: 'Nunito, sans-serif', fontSize: '0.85rem', color: '#6b7280', textDecoration: 'none' }}>
                   (81) 9 9999-9999
                 </a>
               </div>
@@ -161,14 +141,14 @@ export default function Footer() {
       </div>
 
       {/* Bottom strip */}
-      <div className="border-t border-line py-5 px-5 md:px-8">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="text-ink-muted text-[0.78rem]" style={{ fontFamily: "'Nunito', sans-serif" }}>
+      <div style={{ borderTop: '1px solid #e5e7eb', padding: '20px 24px' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', gap: 8 }} className="sm:flex-row">
+          <p style={{ fontFamily: 'Nunito, sans-serif', fontSize: '0.78rem', color: '#9ca3af' }}>
             © {new Date().getFullYear()} Cemevet Cursos. Todos os direitos reservados.
           </p>
-          <div className="flex gap-4">
+          <div style={{ display: 'flex', gap: 16 }}>
             {['Termos de uso', 'Privacidade'].map((l) => (
-              <a key={l} href="#" className="text-ink-muted text-[0.78rem] hover:text-ink transition-colors" style={{ fontFamily: "'Nunito', sans-serif" }}>
+              <a key={l} href="#" style={{ fontFamily: 'Nunito, sans-serif', fontSize: '0.78rem', color: '#9ca3af', textDecoration: 'none' }}>
                 {l}
               </a>
             ))}

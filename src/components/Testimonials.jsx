@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
 import { useReveal } from '../hooks/useReveal'
 
+const G = '#1f7a3c'
+
 const testimonials = [
   {
     name: 'Ana Luiza S.',
@@ -48,7 +50,7 @@ const testimonials = [
 
 function Stars() {
   return (
-    <div className="flex gap-0.5 mb-3">
+    <div style={{ display: 'flex', gap: 2, marginBottom: 12 }}>
       {[...Array(5)].map((_, i) => (
         <svg key={i} width="13" height="13" viewBox="0 0 24 24" fill="#f59e0b">
           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
@@ -62,22 +64,24 @@ export default function Testimonials() {
   const { ref, inView } = useReveal()
 
   return (
-    <section id="depoimentos" ref={ref} className="py-20 md:py-24 px-5 md:px-8 bg-white">
-      <div className="max-w-6xl mx-auto">
+    <section id="depoimentos" ref={ref} style={{ padding: '80px 0', background: '#ffffff' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 24px' }}>
 
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center mb-14 max-w-xl mx-auto"
+          style={{ textAlign: 'center', marginBottom: 56, maxWidth: 520, margin: '0 auto 56px' }}
         >
-          <div className="section-divider mx-auto" />
-          <p className="section-label mb-3">Depoimentos</p>
-          <h2 className="section-heading mb-4">
+          <div style={{ width: 40, height: 3, background: G, borderRadius: 2, margin: '0 auto 16px' }} />
+          <p style={{ fontFamily: 'Nunito, sans-serif', fontSize: 12, fontWeight: 700, color: G, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 12 }}>
+            Depoimentos
+          </p>
+          <h2 style={{ fontFamily: 'Fredoka, sans-serif', fontSize: 'clamp(1.75rem, 4vw, 2.4rem)', fontWeight: 600, color: '#111827', lineHeight: 1.15, marginBottom: 16 }}>
             O que nossos alunos dizem
           </h2>
-          <p className="body-copy">
+          <p style={{ fontFamily: 'Nunito, sans-serif', fontSize: '0.9rem', color: '#6b7280', lineHeight: 1.75 }}>
             Histórias reais de quem transformou sua relação com os animais
             em uma carreira de verdade.
           </p>
@@ -90,30 +94,20 @@ export default function Testimonials() {
               key={name}
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: i * 0.08, duration: 0.6, ease: [0.25,0.46,0.45,0.94] }}
-              className="bg-white rounded-xl p-6 border border-line card-lift"
+              transition={{ delay: i * 0.08, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+              style={{ background: '#fff', borderRadius: 14, padding: 24, border: '1px solid #e5e7eb', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}
             >
               <Stars />
-              <p
-                className="text-ink-mid text-[0.875rem] leading-relaxed mb-6"
-                style={{ fontFamily: "'Nunito', sans-serif" }}
-              >
+              <p style={{ fontFamily: 'Nunito, sans-serif', fontSize: '0.875rem', color: '#374151', lineHeight: 1.75, marginBottom: 24 }}>
                 "{text}"
               </p>
-              <div className="flex items-center gap-3 pt-4 border-t border-line">
-                <div
-                  className="w-10 h-10 rounded-full flex items-center justify-center text-[0.75rem] font-bold text-white shrink-0"
-                  style={{ background: color }}
-                >
-                  {initials}
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, paddingTop: 16, borderTop: '1px solid #e5e7eb' }}>
+                <div style={{ width: 40, height: 40, borderRadius: '50%', background: color, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <span style={{ fontFamily: 'Nunito, sans-serif', fontWeight: 700, fontSize: '0.75rem', color: '#fff' }}>{initials}</span>
                 </div>
                 <div>
-                  <p className="font-bold text-ink text-[0.875rem]" style={{ fontFamily: "'Nunito', sans-serif" }}>
-                    {name}
-                  </p>
-                  <p className="text-ink-soft text-[0.75rem]" style={{ fontFamily: "'Nunito', sans-serif" }}>
-                    {role}
-                  </p>
+                  <p style={{ fontFamily: 'Nunito, sans-serif', fontWeight: 700, fontSize: '0.875rem', color: '#111827' }}>{name}</p>
+                  <p style={{ fontFamily: 'Nunito, sans-serif', fontSize: '0.75rem', color: '#6b7280' }}>{role}</p>
                 </div>
               </div>
             </motion.div>
@@ -125,16 +119,16 @@ export default function Testimonials() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.6, duration: 0.6 }}
-          className="mt-12 grid grid-cols-3 gap-6 py-8 px-8 rounded-2xl border border-line bg-surface"
+          style={{ marginTop: 48, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, padding: '32px', borderRadius: 16, border: '1px solid #e5e7eb', background: '#f9fafb' }}
         >
           {[
             { v: '4.9/5', l: 'Avaliação média' },
             { v: '+200',  l: 'Alunos formados' },
             { v: '100%',  l: 'Recomendam o curso' },
           ].map(({ v, l }) => (
-            <div key={l} className="text-center">
-              <p className="font-bold text-[1.6rem] text-brand" style={{ fontFamily: "'Fredoka', sans-serif" }}>{v}</p>
-              <p className="text-ink-soft text-[0.78rem]" style={{ fontFamily: "'Nunito', sans-serif" }}>{l}</p>
+            <div key={l} style={{ textAlign: 'center' }}>
+              <p style={{ fontFamily: 'Fredoka, sans-serif', fontWeight: 700, fontSize: '1.6rem', color: G, lineHeight: 1, marginBottom: 4 }}>{v}</p>
+              <p style={{ fontFamily: 'Nunito, sans-serif', fontSize: '0.78rem', color: '#6b7280' }}>{l}</p>
             </div>
           ))}
         </motion.div>
